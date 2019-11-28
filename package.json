@@ -1,0 +1,44 @@
+{
+  "name": "ledger-addresses-list-paul",
+  "version": "1.0.0",
+  "main": "src/index.html",
+  "license": "MIT",
+  "scripts": {
+    "start": "NODE_ENV=development parcel src/index.html --open",
+    "build": "NODE_ENV=production parcel build dist/index.html --public-url ./",
+    "prettier": "prettier --write --print-width 100 --tab-width 4 \"src/**/*.js\"",
+    "test": "jest"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx}": [
+      "eslint"
+    ],
+    "*.{js,jsx,ts}": [
+      "yarn test --onlyChanged --findRelatedTests"
+    ],
+    "*.{js,jsx,md,json}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "dependencies": {
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "husky": "^3.1.0",
+    "jest": "^24.9.0",
+    "json5": "^2.1.1",
+    "node-sass": "^4.13.0",
+    "parcel-bundler": "^1.12.4",
+    "prettier": "^1.19.1"
+  }
+}
