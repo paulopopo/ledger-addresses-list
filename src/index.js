@@ -1,12 +1,17 @@
+//@flow
+
 import React from "react";
 import ReactDOM from "react-dom";
+import { AddressesList } from "/modules";
+import { AddressProvider } from "/context";
 
-class App extends React.Component {
+class App extends React.Component<{}> {
   render() {
     return (
-      <React.Fragment>
+      <AddressProvider>
         <h2>Hello! I am test</h2>
-      </React.Fragment>
+        <AddressesList />
+      </AddressProvider>
     );
   }
 }
