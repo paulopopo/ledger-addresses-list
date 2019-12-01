@@ -4,6 +4,12 @@ import React, { useContext } from "react";
 import { AddressContext } from "/context";
 
 export default Component => props => {
-  const { state } = useContext(AddressContext);
-  return <Component {...props} state={state} />;
+  const { state, actions } = useContext(AddressContext);
+  return (
+    <Component
+      {...props}
+      isEditing={state.isEditing}
+      setIsEditing={actions.setIsEditing}
+    />
+  );
 };

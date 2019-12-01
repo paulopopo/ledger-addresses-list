@@ -4,12 +4,13 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { AddressesList } from "/modules";
 import { AddressProvider } from "/context";
+import "@babel/polyfill";
+import "semantic-ui-css/semantic.min.css";
 
 class App extends React.Component<{}> {
   render() {
     return (
       <AddressProvider>
-        <h2>Hello! I am test</h2>
         <AddressesList />
       </AddressProvider>
     );
