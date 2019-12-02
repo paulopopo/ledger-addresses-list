@@ -1,7 +1,7 @@
 //@flow
-import { AddresseShort } from "/types";
+import { AddressShort } from '/types';
 
 export type ViewState = {
-  view: string,
-  data?: AddresseShort
+    view: string,
+    data?: AddressShort,
 };

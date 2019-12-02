@@ -1,8 +1,8 @@
 //@flow
 
-import { Dropdown } from "semantic-ui-react";
-import { listCryptoCurrencies } from "@ledgerhq/live-common/lib/currencies";
-import React, { useState } from "react";
+import { Dropdown } from 'semantic-ui-react';
+import { listCryptoCurrencies } from '@ledgerhq/live-common/lib/currencies';
+import React, { useState } from 'react';
 
 /**
  * Return DropDown Components
@@ -11,50 +11,45 @@ import React, { useState } from "react";
  * @param setValue {Function} Callback function with setting dropdown Value
  */
 type SelectCurrencyType = {
-  name: string,
-  defaultValue?: string,
-  register?: function,
-  setValue: function
+    name: string,
+    defaultValue?: string,
+    register?: function,
+    setValue: function,
 };
 
-const SelectCurrency = ({
-  name,
-  register,
-  setValue,
-  defaultValue
-}: SelectCurrencyType) => {
-  const currencies = listCryptoCurrencies();
-  register && register({ name }, { required: true });
-  const [selectedValue, setSelectedValue] = useState(defaultValue);
+const SelectCurrency = ({ name, register, setValue, defaultValue }: SelectCurrencyType) => {
+    const currencies = listCryptoCurrencies();
+    register && register({ name }, { required: true });
+    const [selectedValue, setSelectedValue] = useState(defaultValue);
 
-  return (
-    <React.Fragment>
-      <Dropdown
-        name={name}
-        value={selectedValue}
-        placeholder="Select Friend"
-        fluid
-        search
-        selection
-        options={currencies.map(currency => ({
-          key: currency.id,
-          value: currency.id,
-          text: currency.name
-        }))}
-        onChange={(e, { value }) => {
-          setSelectedValue(value);
-          setValue(value);
-        }}
-      />
-    </React.Fragment>
-  );
+    return (
+        <React.Fragment>
+            <Dropdown
+                name={name}
+                value={selectedValue}
+                placeholder="Select Friend"
+                fluid
+                search
+                selection
+                options={currencies.map(currency => ({
+                    key: currency.id,
+                    value: currency.id,
+                    text: currency.name,
+                }))}
+                onChange={(e, { value }) => {
+                    setSelectedValue(value);
+                    setValue(value);
+                }}
+            />
+        </React.Fragment>
+    );
 };
 
 SelectCurrency.defaultProps = {
-  name: "",
-  register: null,
-  defaultValue: "",
-  setValue: () => {}
+    name: '',
+    register: null,
+    defaultValue: '',
+    setValue: () => {},
 };
 
 export default SelectCurrency;

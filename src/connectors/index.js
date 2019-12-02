@@ -1,3 +1,3 @@
 //@flow
 
-export { default as withAddress } from "./withAddress";
+export { default as withAddress } from './withAddress';
