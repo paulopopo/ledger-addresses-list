@@ -8,17 +8,36 @@ type TablePropsType = {
   setIsEditing: function
 };
 export default withAddress(
-  ({ addressLists, isEditing, setIsEditing }: TablePropsType) => {
-    const [isClosing, setIsClosing] = useState(false);
+  ({ addressLists, viewState, setViewState }: TablePropsType) => {
+    // const [isClosing, setIsClosing] = useState(false);
+    const [nextViewState, setNextViewState] = useState(viewState);
     return (
       <div
-        onTransitionEnd={() => setIsEditing(true)}
+        onTransitionEnd={() => setViewState(nextViewState)}
         className={`table__container ${
-          !isEditing && isClosing ? "table__container--close" : ""
+          nextViewState.view !== "Table" ? "table__container--close" : ""
         }`}
       >
         Table
-        <button onClick={() => setIsClosing(true)}> Add New Address</button>
+        <button onClick={() => setNextViewState({ view: "AddForm", data: {} })}>
+          {" "}
+          Add New Address
+        </button>
+        <button
+          onClick={() =>
+            setNextViewState({
+              view: "EditForm",
+              data: {
+                name: "Client",
+                address: "mtXWDB6k5yC5v7TcwKZHB89SUp85yCKshy",
+                currencyId: "eos"
+              }
+            })
+          }
+        >
+          {" "}
+          Edit Address
+        </button>
         <div> {JSON.stringify(addressLists)}</div>
       </div>
     );

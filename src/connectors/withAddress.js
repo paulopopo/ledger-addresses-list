@@ -8,8 +8,8 @@ export default Component => props => {
   return (
     <Component
       {...props}
-      isEditing={state.isEditing}
-      setIsEditing={actions.setIsEditing}
+      viewState={state.viewState}
+      setViewState={actions.setViewState}
     />
   );
 };

@@ -1,18 +1,19 @@
 //@flow
-import React, { Component } from "react";
+import React from "react";
 import { withAddress } from "/connectors";
 import "./style.scss";
 import { Form, Table } from "/modules";
+import { ViewState } from "/types";
 
 //Address context = list of address
-class Index extends Component<{}> {
-  render() {
-    return (
-      <div className="addressList__container center">
-        {this.props.isEditing ? <Form /> : <Table />}
-      </div>
-    );
-  }
-}
+const AddressesList = ({ viewState }: ViewState) => {
+  return (
+    <div className="addressList__container center">
+      {viewState.view === "Table" && <Table />}
+      {viewState.view === "AddForm" && <Form />}
+      {viewState.view === "EditForm" && <Form />}
+    </div>
+  );
+};
 
-export default withAddress(Index);
+export default withAddress(AddressesList);

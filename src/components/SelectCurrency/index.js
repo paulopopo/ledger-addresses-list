@@ -12,21 +12,30 @@ import React from "react";
  */
 type SelectCurrencyType = {
   name: string,
+  defaultValue?: string,
   register?: function,
   setValue: function
 };
 
-const SelectCurrency = ({ name, register, setValue }: SelectCurrencyType) => {
+const SelectCurrency = ({
+  name,
+  register,
+  setValue,
+  defaultValue
+}: SelectCurrencyType) => {
   const currencies = listCryptoCurrencies();
+
   register && register({ name }, { required: true });
 
-  // console.log(listCryptoCurrencies());
+  // console.log( "Hello", defaultValue, listCryptoCurrencies());
   return (
     <React.Fragment>
       <Dropdown
         name={name}
+        value={defaultValue}
         placeholder="Select Friend"
         fluid
+        search
         selection
         options={currencies.map(currency => ({
           key: currency.id,
@@ -44,6 +53,7 @@ const SelectCurrency = ({ name, register, setValue }: SelectCurrencyType) => {
 SelectCurrency.defaultProps = {
   name: "",
   register: null,
+  defaultValue: "",
   setValue: () => {}
 };
 
