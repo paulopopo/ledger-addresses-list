@@ -9,6 +9,7 @@ import React, { useState } from 'react';
  * @param name {String} For reference when dealing with ref
  * @param register {Function} register function given by react-hooks-form. not mandatory
  * @param setValue {Function} Callback function with setting dropdown Value
+ * @returns {ReactComponent}
  */
 type SelectCurrencyType = {
     name: string,
@@ -22,6 +23,7 @@ const SelectCurrency = ({ name, register, setValue, defaultValue }: SelectCurren
     register && register({ name }, { required: true });
     const [selectedValue, setSelectedValue] = useState(defaultValue);
 
+    console.log(listCryptoCurrencies())
     return (
         <React.Fragment>
             <Dropdown

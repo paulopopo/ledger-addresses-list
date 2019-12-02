@@ -21,13 +21,13 @@ export default withAddress(
                 Listing
                 <Table
                     data={addressesListData}
-                    onUpdate={() =>
+                    onUpdate={(data) =>
                         setNextViewState({
                             view: 'EditForm',
                             data,
                         })
                     }
-                    onDelete={updateAddressAtName}
+                    onDelete={removeAddressAtName}
                 />
                 <button onClick={() => setNextViewState({ view: 'AddForm', data: {} })}> Add New Listing</button>
                 <button

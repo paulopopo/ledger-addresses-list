@@ -15,6 +15,7 @@ type InputWithErrorType = {
  * @param displayError {boolean} Will display the error message if true
  * @param errorMessage {string} Error message
  * @param children {React.Node} react node elements
+ * @returns {ReactComponent}
  */
 const InputWithError = ({ label, displayError, errorMessage, children }: InputWithErrorType) => {
     return (

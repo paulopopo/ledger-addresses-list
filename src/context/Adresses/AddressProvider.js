@@ -11,14 +11,14 @@ const defaultAddressList = [
         currencyId: 'eos',
     },
     {
-        name: 'Client xrp',
+        name: 'Client ripple',
         address: 'ZZZZZ6k5yC5v7TcwKZHB89SUp85yCKshy',
-        currencyId: 'xrp',
+        currencyId: "ripple",
     },
     {
-        name: 'Client btc',
+        name: 'my btc',
         address: 'OOOOO6k5yC5v7TcwKZHB89SUp85yCKshy',
-        currencyId: 'btc',
+        currencyId: 'bitcoin',
     },
 ];
 export default ({ children }) => {
@@ -34,8 +34,8 @@ export default ({ children }) => {
     const removeAddressAtName = name =>
         setAddressesListData(addressesListData.filter(address => address.name !== name));
 
-    const updateAddressAtName = newAddress => {
-        addressesListData[addressesListData.findIndex(address => address.name === newAddress.name)] = newAddress;
+    const updateAddressAtName = (previous,newAddress) => {
+        addressesListData[addressesListData.findIndex(address => address.name === previous.name)] = newAddress;
         setAddressesListData(addressesListData);
     };
 
