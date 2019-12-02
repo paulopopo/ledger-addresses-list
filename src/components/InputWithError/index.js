@@ -22,7 +22,6 @@ const InputWithError = ({ label, displayError, errorMessage, children }: InputWi
         <div className="inputWithError">
             <label htmlFor="firstName">{label}</label>
             {children}
-            {/*<input name={name} placeholder={placeholder} ref={ref} />*/}
             {displayError && <p> {errorMessage} </p>}
         </div>
     );

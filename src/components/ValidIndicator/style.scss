@@ -1,0 +1,18 @@
+@import "/commonStyle/colors.scss";
+@import "/commonStyle/sizes.scss";
+
+.validIndicator {
+  &-valid{
+    color : $green;
+  }
+  &-error{
+    color : $red;
+  }
+  &-loading {
+    color : orange;
+  }
+}
+.title {
+  text-align : center;
+  font-size : $primaryMediumTextSize;
+}

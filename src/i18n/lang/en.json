@@ -1,0 +1,30 @@
+{
+    "translation": {
+        "welcome": "Welcome",
+        "Listing": {
+            "addNewAddrress": "Add a new Address",
+            "name": "Name",
+            "currency": "Currency",
+            "address": "Address",
+            "actions": "Actions"
+        },
+        "Form": {
+            "cancel": "Cancel",
+            "currency": "Currency",
+            "name": "Name",
+            "address": "Address",
+            "valid": "Valid",
+            "error": "Error",
+            "loading": "Loading",
+            "yourSelectedCurrencyAddress": "Your selected currency address",
+            "add": "Add",
+            "edit": "Edit",
+            "selectCurrency": "Select a currency"
+        },
+        "Errors": {
+            "currencyRequired": "Currency is required",
+            "nameRequired": "Name is required",
+            "addressLength": "Address length invalid"
+        }
+    }
+}

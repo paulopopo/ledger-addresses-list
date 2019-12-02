@@ -7,6 +7,7 @@ import { AddressProvider } from '/context';
 import '@babel/polyfill';
 import 'semantic-ui-css/semantic.min.css';
 import 'react-table/react-table.css';
+import '/i18n';
 
 class App extends React.Component<{}> {
     render() {

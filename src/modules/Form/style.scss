@@ -2,9 +2,15 @@
   &__container{
     opacity: 1;
     transition: opacity 0.5s ease-in-out;
+
+    .back-button {
+      cursor: pointer;
+      span {
+        padding: 5px;
+      }
+    }
   }
   &__container--close{
     opacity: 0;
   }
-
 }

@@ -1,0 +1,25 @@
+{
+    "translation": {
+        "welcome": "Bienvnue",
+        "Listing": {
+            "addNewAddrress": "Ajouter une adresse",
+            "name": "Nom",
+            "currency": "Monnaie",
+            "address": "Adresse",
+            "actions": "Actions"
+        },
+        "Form": {
+            "cancel": "Annuler",
+            "currency": "Monnaie",
+            "name": "Nom",
+            "address": "Adresse",
+            "valid": "Valide",
+            "error": "Erreur",
+            "loading": "Chargement",
+            "yourSelectedCurrencyAddress": "L 'adresse de votre monnaie",
+            "add": "Ajouter",
+            "edit": "Editer",
+            "selectCurrency": "Sélectionner une monnaie"
+        }
+    }
+}

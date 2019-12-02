@@ -2,39 +2,41 @@
 
 import React, { useState } from 'react';
 import { Provider } from './AddressContext';
-import { ViewState } from '/types';
+import { ViewState, AddressShort } from '/types';
 
 const defaultAddressList = [
     {
-        name: 'Client eos',
-        address: 'mtXWDB6k5yC5v7TcwKZHB89SUp85yCKshy',
+        name: ' eos',
+        address: 'pZk5yC5v7JsD',
         currencyId: 'eos',
     },
     {
-        name: 'Client ripple',
-        address: 'ZZZZZ6k5yC5v7TcwKZHB89SUp85yCKshy',
-        currencyId: "ripple",
+        name: 'Brad Garlinghouse',
+        address: 'ZZZZZ6k5yC5v7TcwKZHB89SU',
+        currencyId: 'ripple',
     },
     {
-        name: 'my btc',
-        address: 'OOOOO6k5yC5v7TcwKZHB89SUp85yCKshy',
+        name: 'Vitalik Buterin',
+        address: 'p85yCKshyp85yCKshyp85yCKshyp85yC',
+        currencyId: 'ethereum',
+    },
+    {
+        name: 'John Doe',
+        address: 'pZk5yC5v7Tcw',
         currencyId: 'bitcoin',
     },
 ];
 export default ({ children }) => {
-    // const { children } = this.props;
-    const [viewState: ViewState, setViewState] = useState({
+    const [viewState: ViewState, setViewState: function] = useState({
         view: 'Listing',
         data: {},
     });
-
-    // const [addressesListData ,setAddressesListData] = useState();
-    const [addressesListData, setAddressesListData] = useState(defaultAddressList);
+    const [addressesListData: Array<AddressShort>, setAddressesListData: function] = useState(defaultAddressList);
 
     const removeAddressAtName = name =>
         setAddressesListData(addressesListData.filter(address => address.name !== name));
 
-    const updateAddressAtName = (previous,newAddress) => {
+    const updateAddressAtName = (previous, newAddress) => {
         addressesListData[addressesListData.findIndex(address => address.name === previous.name)] = newAddress;
         setAddressesListData(addressesListData);
     };

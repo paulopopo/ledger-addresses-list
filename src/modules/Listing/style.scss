@@ -2,6 +2,12 @@
   &__container{
     opacity: 1;
     transition: opacity 0.5s ease-in-out;
+
+    padding: 10px;
+    .add-button {
+      margin: 10px 0;
+      text-align: right;
+    }
   }
   &__container--close{
     opacity: 0;

@@ -3,46 +3,45 @@
 import React from 'react';
 import ReactTable from 'react-table';
 import { AddressShort } from '/types';
-
+import { Icon } from 'semantic-ui-react';
+import { withi18n } from '/connectors';
 type TableType = {
     data: Array<AddressShort>,
     onUpdate: function,
-    onDelete: function
+    onDelete: function,
 };
 
-const ActionsCell = ({data,  onUpdate, onDelete }) => (
-   <div>
-       <button onClick={()=> onUpdate(data)}> Edit</button>
-       <button onClick={()=> onDelete(data.name)}> Delete</button>
-   </div>
-);
-const columns = (onUpdate, onDelete ) => [
+const columns = (onUpdate: function, onDelete: function, t: function) => [
     {
-        Header: 'Name',
+        Header: t('Listing.name'),
         accessor: 'name',
         headerStyle: { whiteSpace: 'unset' },
         style: { whiteSpace: 'unset' },
     },
     {
-        Header: 'Currency',
+        Header: t('Listing.currency'),
         accessor: 'currencyId',
         headerStyle: { whiteSpace: 'unset' },
         style: { whiteSpace: 'unset' },
     },
     {
-        Header: 'Address',
+        Header: t('Listing.address'),
         accessor: 'address',
         headerStyle: { whiteSpace: 'unset' },
         style: { whiteSpace: 'unset' },
-    },  {
-        Header: 'Actions',
+    },
+    {
+        Header: t('Listing.actions'),
         headerStyle: { whiteSpace: 'unset' },
         style: { whiteSpace: 'unset' },
-        Cell : row => <ActionsCell data={row.original}  onUpdate={onUpdate}  onDelete={onDelete} />
+        Cell: row => (
+            <div>
+                <Icon onClick={() => onUpdate(row.original)} color="green" name="edit" />
+                <Icon onClick={() => onDelete(row.original.name)} color="red" name="trash" />
+            </div>
+        ),
     },
 ];
-
-
 
 /**
  *
@@ -51,13 +50,16 @@ const columns = (onUpdate, onDelete ) => [
  * @param onDelete {function} callback function when clicking on delete action button
  * @returns {ReactComponent}
  */
-const Table = ({ data, onUpdate, onDelete }: TableType) => {
-
-
+const Table = ({ t, data, onUpdate, onDelete }: TableType) => {
     return (
-        <div style={{ padding: '50px' }}>
-            <ReactTable manual minRows={0} pageSize={1} data={data} columns={columns(onUpdate, onDelete)} pages={0} showPagination={true} />
-        </div>
+        <ReactTable
+            minRows={1}
+            pageSize={5}
+            data={data}
+            showPageSizeOptions={false}
+            columns={columns(onUpdate, onDelete, t)}
+            showPagination={true}
+        />
     );
 };
 
@@ -67,4 +69,4 @@ Table.defaultProps = {
     onDelete: () => {},
 };
 
-export default Table;
+export default withi18n(Table);
