@@ -10,7 +10,7 @@ I have developped & tested the application with:
 
 ## 2. Usage
 
-1.  The application use `XXXX` external library to handle
+1.  The application use `@ledger/live-common` external library to handle
 
     run the follow command to install it
 
