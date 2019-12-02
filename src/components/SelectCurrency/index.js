@@ -2,7 +2,7 @@
 
 import { Dropdown } from "semantic-ui-react";
 import { listCryptoCurrencies } from "@ledgerhq/live-common/lib/currencies";
-import React from "react";
+import React, { useState } from "react";
 
 /**
  * Return DropDown Components
@@ -24,15 +24,14 @@ const SelectCurrency = ({
   defaultValue
 }: SelectCurrencyType) => {
   const currencies = listCryptoCurrencies();
-
   register && register({ name }, { required: true });
+  const [selectedValue, setSelectedValue] = useState(defaultValue);
 
-  // console.log( "Hello", defaultValue, listCryptoCurrencies());
   return (
     <React.Fragment>
       <Dropdown
         name={name}
-        value={defaultValue}
+        value={selectedValue}
         placeholder="Select Friend"
         fluid
         search
@@ -43,7 +42,8 @@ const SelectCurrency = ({
           text: currency.name
         }))}
         onChange={(e, { value }) => {
-          setValue(name, value, true);
+          setSelectedValue(value);
+          setValue(value);
         }}
       />
     </React.Fragment>

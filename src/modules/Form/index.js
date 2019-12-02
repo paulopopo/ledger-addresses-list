@@ -9,7 +9,13 @@ type FormType = {
   elt: any,
   setViewState: function
 };
-export default withAddress(({ viewState, setViewState }: FormType) => {
+
+const Form = ({
+  viewState,
+  setViewState,
+  updateAddressAtName,
+  addAddress
+}: FormType) => {
   const [nextViewState, setNextViewState] = useState(viewState);
 
   const { register, errors, handleSubmit, setValue } = useForm({
@@ -22,20 +28,32 @@ export default withAddress(({ viewState, setViewState }: FormType) => {
   }, [errors]);
 
   const onSubmit = data => {
+    if (Object.keys(errors).length > 0) return;
+
     alert(JSON.stringify(data));
-    setViewState({ view: "Table", data: {} });
+    if (viewState.view === "AddForm") {
+      addAddress(data);
+    }
+    if (viewState.view === "EditForm") {
+      updateAddressAtName(data);
+    }
+    setViewState({ view: "Listing", data: {} });
   };
 
   return (
     <div
-      onTransitionEnd={() => setViewState({ view: "Table", data: {} })}
+      onTransitionEnd={() =>
+        nextViewState.view !== "EditForm" &&
+        nextViewState.view !== "AddForm" &&
+        setViewState({ view: "Listing", data: {} })
+      }
       className={`form__container ${
         nextViewState.view !== "EditForm" && nextViewState.view !== "AddForm"
           ? "form__container--close"
           : ""
       } `}
     >
-      <button onClick={() => setNextViewState({ view: "Table", demo: {} })}>
+      <button onClick={() => setNextViewState({ view: "Listing", demo: {} })}>
         Cancel
       </button>
       <form onSubmit={handleSubmit(onSubmit)}>
@@ -52,7 +70,7 @@ export default withAddress(({ viewState, setViewState }: FormType) => {
         </InputWithError>
 
         <InputWithError
-          displayError={errors.currency}
+          displayError={errors.currencyId}
           ErrorMessage="Currency is required"
           label="Currency"
         >
@@ -65,9 +83,9 @@ export default withAddress(({ viewState, setViewState }: FormType) => {
         </InputWithError>
 
         <InputWithError
-          label="Address"
+          label="Listing"
           displayError={errors.address}
-          ErrorMessage="Address is required"
+          ErrorMessage="Listing is required"
         >
           <input
             name="address"
@@ -80,4 +98,7 @@ export default withAddress(({ viewState, setViewState }: FormType) => {
       </form>
     </div>
   );
-});
+};
+
+//Using memo since Adding new Listing is often display
+export default withAddress(React.memo(Form));

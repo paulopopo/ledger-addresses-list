@@ -2,26 +2,44 @@
 
 import React, { useState } from "react";
 import { withAddress } from "/connectors";
+import { Table } from "/components";
+
 import "./style.scss";
-type TablePropsType = {
+type ListingPropsType = {
   addressLists: any,
   setIsEditing: function
 };
 export default withAddress(
-  ({ addressLists, viewState, setViewState }: TablePropsType) => {
-    // const [isClosing, setIsClosing] = useState(false);
+  ({
+    viewState,
+    setViewState,
+    addressesListData,
+    removeAddressAtName,
+    updateAddressAtName
+  }: ListingPropsType) => {
     const [nextViewState, setNextViewState] = useState(viewState);
+
     return (
       <div
         onTransitionEnd={() => setViewState(nextViewState)}
-        className={`table__container ${
-          nextViewState.view !== "Table" ? "table__container--close" : ""
+        className={`Listing__container ${
+          nextViewState.view !== "Listing" ? "Listing__container--close" : ""
         }`}
       >
-        Table
+        Listing
+        <Table
+          data={addressesListData}
+          onUpdate={() =>
+            setNextViewState({
+              view: "EditForm",
+              data
+            })
+          }
+          onDelete={updateAddressAtName}
+        />
         <button onClick={() => setNextViewState({ view: "AddForm", data: {} })}>
           {" "}
-          Add New Address
+          Add New Listing
         </button>
         <button
           onClick={() =>
@@ -36,9 +54,8 @@ export default withAddress(
           }
         >
           {" "}
-          Edit Address
+          Edit Listing
         </button>
-        <div> {JSON.stringify(addressLists)}</div>
       </div>
     );
   }
