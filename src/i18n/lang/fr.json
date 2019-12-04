@@ -20,6 +20,11 @@
             "add": "Ajouter",
             "edit": "Editer",
             "selectCurrency": "Sélectionner une monnaie"
+        },
+        "Errors": {
+            "currencyRequired": "Choissez votre monnaie",
+            "nameRequired": "Veuillez renseigner un nom",
+            "addressLength": "La taille de l adresse est invalide"
         }
     }
 }

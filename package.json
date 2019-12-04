@@ -40,7 +40,8 @@
         "react-i18next": "^11.2.5",
         "react-table": "^6.10.3",
         "semantic-ui-css": "^2.4.1",
-        "semantic-ui-react": "^0.88.1"
+        "semantic-ui-react": "^0.88.1",
+        "serve": "^11.2.0"
     },
     "devDependencies": {
         "babel-core": "^6.26.3",
