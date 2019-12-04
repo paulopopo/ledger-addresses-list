@@ -13,4 +13,4 @@ RUN npm run build
 
 EXPOSE 5000
 
-CMD  serve
+CMD  serve dist -p 5000

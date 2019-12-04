@@ -45,7 +45,6 @@ Come back to this project and finally, run :
 In the application directory:
 
     yarn run test
-    
 
 ## 4. With Docker
 
@@ -56,6 +55,9 @@ In the application directory:
 
 The Dockerfile contains a command `serve` that will serve the built app on port 5000
 To run the image
-        
-        docker run -p 49160:5000 -d <app-name>
+  
+ docker run -p 5000:5000 -d <app-name>
+  
+Open your browser, you will reach the app at :
 
+        http://localhost:5000
